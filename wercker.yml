@@ -1,0 +1,23 @@
+test:
+  box:
+    id: youyo/gobuild:latest
+    cmd: /bin/sh
+  steps:
+    - wercker/setup-go-workspace:
+      package-dir: github.com/youyo/zabbixctl
+    - script:
+      name: Tests
+      code: |-
+        make test
+
+release:
+  box:
+    id: youyo/gobuild:latest
+    cmd: /bin/sh
+  steps:
+    - wercker/setup-go-workspace:
+      package-dir: github.com/youyo/zabbixctl
+    - script:
+      name: Releases
+      code: |-
+        make release

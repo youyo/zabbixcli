@@ -1,0 +1,51 @@
+Name := zabbixctl
+Version := $(shell git describe --tags --abbrev=0)
+GOOS := linux
+GOARCH := amd64
+OWNER := youyo
+.DEFAULT_GOAL := help
+
+## Setup
+setup:
+	go get github.com/kardianos/govendor
+	go get github.com/golang/lint/golint
+	go get golang.org/x/tools/cmd/goimports
+	go get github.com/Songmu/make2help/cmd/make2help
+
+## Run tests
+test: deps
+	govendor test +local
+
+## Install dependencies
+deps: setup
+	govendor fetch +outside
+
+## Vet
+vet: setup
+	govendor vet +local
+
+## Lint
+lint: setup
+	govendor vet +local
+	for pkg in $$(govendor list -p -no-status +local); do \
+		golint -set_exit_status $$pkg || exit $$?; \
+	done
+
+## Build
+build: deps
+	GOOS=$(GOOS) GOARCH=$(GOARCH) go build -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)"
+
+## Build
+build-local: deps
+	go build -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)"
+
+## Release
+release: build
+	zip $(Name)_$(GOOS)_$(GOARCH).zip $(Name)
+	ghr -t ${GITHUB_TOKEN} -u $(OWNER) -r $(Name) --replace $(Version) $(Name)_$(GOOS)_$(GOARCH).zip
+
+## Show help
+help:
+	@make2help $(MAKEFILE_LIST)
+
+.PHONY: setup test deps vet lint build release help
