@@ -14,3 +14,4 @@ Vagrantfile
 dist/
 vendor/*
 !vendor/vendor.json
+zabbixctl
