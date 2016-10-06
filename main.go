@@ -6,6 +6,9 @@ import (
 	"github.com/codegangsta/cli"
 )
 
+var Name string
+var Version string
+
 func main() {
 
 	app := cli.NewApp()
@@ -13,7 +16,7 @@ func main() {
 	app.Version = Version
 	app.Author = "youyo"
 	app.Email = ""
-	app.Usage = ""
+	app.Usage = "Registering and deleting to zabbix."
 
 	app.Flags = GlobalFlags
 	app.Commands = Commands
