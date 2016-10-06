@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "BfEO33iOn7WG/+yNXETj2ze64rs=",
+			"path": "github.com/codegangsta/cli",
+			"revision": "55f715e28c46073d0e217e2ce8eb46b0b45e3db6",
+			"revisionTime": "2016-10-06T03:53:53Z"
+		}
+	],
+	"rootPath": "github.com/youyo/zabbixctl"
+}
