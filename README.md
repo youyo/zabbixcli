@@ -1,6 +1,6 @@
 # zabbixctl
 
-
+[![wercker status](https://app.wercker.com/status/e775b2c37f940071044d7775fc843676/s/master "wercker status")](https://app.wercker.com/project/byKey/e775b2c37f940071044d7775fc843676)
 
 ## Description
 
