@@ -8,7 +8,12 @@ import (
 	"github.com/youyo/zabbixctl/command"
 )
 
-var GlobalFlags = []cli.Flag{}
+var GlobalFlags = []cli.Flag{
+	cli.BoolFlag{
+		Name:  "debug",
+		Usage: "Set LogLevel Debug.",
+	},
+}
 
 var Commands = []cli.Command{
 	{
