@@ -16,7 +16,7 @@ func main() {
 	app.Version = Version
 	app.Author = "youyo"
 	app.Email = ""
-	app.Usage = "Registering and deleting to zabbix."
+	app.Usage = "To controle the host of zabbix."
 
 	app.Flags = GlobalFlags
 	app.Commands = Commands
