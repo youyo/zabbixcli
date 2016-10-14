@@ -12,12 +12,13 @@ setup:
 	go get golang.org/x/tools/cmd/goimports
 	go get github.com/Songmu/make2help/cmd/make2help
 
-## Run tests
-test: deps
-	govendor test +local
-
 ## Install dependencies
 deps: setup
+	govendor sync
+
+## Initialize and Update dependencies
+update: setup
+	rm -rf /vendor/vendor.json
 	govendor fetch +outside
 
 ## Vet
@@ -30,6 +31,10 @@ lint: setup
 	for pkg in $$(govendor list -p -no-status +local); do \
 		golint -set_exit_status $$pkg || exit $$?; \
 	done
+
+## Run tests
+test: deps
+	govendor test +local
 
 ## Build
 build: deps

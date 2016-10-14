@@ -1,25 +1,21 @@
 {
 	"comment": "",
-	"ignore": "",
+	"ignore": "test",
 	"package": [
 		{
-			"path": ".",
-			"revision": ""
-		},
-		{
-			"checksumSHA1": "Xg/4K+D5hM/z09IXSl3UbF5aoyY=",
+			"checksumSHA1": "GBd/Fe1d+MQHdnq3rZx777XsvZM=",
 			"path": "github.com/AlekSi/reflector",
 			"revision": "d7aee842efa4a4d10cd04b8cb3fdd65808ebc093",
 			"revisionTime": "2013-06-27T11:31:03Z"
 		},
 		{
-			"checksumSHA1": "oTKH5m6nPeHccY03SujsKNaJV0E=",
+			"checksumSHA1": "eDBIwvD9vOuVHSVt+K52VuRU7ZI=",
 			"path": "github.com/AlekSi/zabbix",
 			"revision": "332cdfbc6302d68be9d50bd7423f1fc9fcfe21de",
 			"revisionTime": "2016-07-13T09:40:16Z"
 		},
 		{
-			"checksumSHA1": "owV1plcsV5g7TrsXmnkSnOppol8=",
+			"checksumSHA1": "BfEO33iOn7WG/+yNXETj2ze64rs=",
 			"path": "github.com/codegangsta/cli",
 			"revision": "55f715e28c46073d0e217e2ce8eb46b0b45e3db6",
 			"revisionTime": "2016-10-06T03:53:53Z"
