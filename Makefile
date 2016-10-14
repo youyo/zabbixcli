@@ -53,4 +53,4 @@ release: build
 help:
 	@make2help $(MAKEFILE_LIST)
 
-.PHONY: setup test deps vet lint build release help
+.PHONY: setup deps update vet lint test build build-local release help
