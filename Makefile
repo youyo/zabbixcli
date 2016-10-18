@@ -8,8 +8,6 @@ OWNER := youyo
 ## Setup
 setup:
 	go get github.com/kardianos/govendor
-	go get github.com/golang/lint/golint
-	go get golang.org/x/tools/cmd/goimports
 	go get github.com/Songmu/make2help/cmd/make2help
 
 ## Install dependencies
@@ -27,6 +25,7 @@ vet: setup
 
 ## Lint
 lint: setup
+	go get github.com/golang/lint/golint
 	govendor vet +local
 	for pkg in $$(govendor list -p -no-status +local); do \
 		golint -set_exit_status $$pkg || exit $$?; \
