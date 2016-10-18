@@ -1,0 +1,22 @@
+version: '2'
+services:
+  zabbix-db:
+    image: monitoringartist/zabbix-db-mariadb
+    environment:
+      - MARIADB_USER=zabbix
+      - MARIADB_PASS=my_password
+  zabbix-server:
+    image: monitoringartist/zabbix-xxl:latest
+    depends_on:
+      - zabbix-db
+    ports:
+      - "8080:80"
+    links:
+      - zabbix-db:zabbix.db
+    environment:
+      - ZS_DBHost=zabbix.db
+      - ZS_DBUser=zabbix
+      - ZS_DBPassword=my_password
+      - XXL_zapix=true
+      - XXL_apiuser=Admin
+      - XXL_apipass=zabbix

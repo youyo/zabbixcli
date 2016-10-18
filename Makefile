@@ -49,8 +49,17 @@ release: build
 	zip $(Name)_$(GOOS)_$(GOARCH).zip $(Name)
 	ghr -t ${GITHUB_TOKEN} -u $(OWNER) -r $(Name) --replace $(Version) $(Name)_$(GOOS)_$(GOARCH).zip
 
+## Build Test-Zabbix-Server
+zabbix-build:
+	docker-compose up -d
+
+## Destroy Test-Zabbix-Server
+zabbix-destroy:
+	docker-compose stop
+	docker-compose rm -f
+
 ## Show help
 help:
 	@make2help $(MAKEFILE_LIST)
 
-.PHONY: setup deps update vet lint test build build-local release help
+.PHONY: setup deps update vet lint test build build-local release zabbix-build zabbix-destroy help

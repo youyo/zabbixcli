@@ -1,19 +1,36 @@
 package command
 
 import (
-	"fmt"
+	"log"
+	"os"
 
 	"github.com/AlekSi/zabbix"
 	"github.com/codegangsta/cli"
+	"github.com/olekukonko/tablewriter"
 )
 
 func CmdTemplateList(c *cli.Context) (err error) {
+	// set logger
+	setLoggerColog(c.GlobalBool("debug"))
+
 	z := newZabbixctl(c)
 	if err = z.login(); err != nil {
+		log.Printf("error: %v", err)
 		return
 	}
 	templates, err := z.templateGet()
-	outputTemplateList(templates)
+	if err != nil {
+		log.Printf("error: %v", err)
+		return
+	}
+
+	// select output format
+	switch c.Bool("raw") {
+	case true:
+		outputRaw(templates)
+	default:
+		outputTable(templates, "Templates")
+	}
 	return
 }
 
@@ -23,6 +40,7 @@ func (z *zabbixctl) templateGet() (templates []string, err error) {
 		"sortfield": "name",
 	})
 	if err != nil {
+		log.Printf("error: %v", err)
 		return nil, err
 	}
 	templates, _ = extractTemplateName(resp)
@@ -39,7 +57,10 @@ func extractTemplateName(resp zabbix.Response) (templates []string, err error) {
 }
 
 func outputTemplateList(templates []string) {
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Templates"})
 	for _, v := range templates {
-		fmt.Println(v)
+		table.Append([]string{v})
 	}
+	table.Render()
 }

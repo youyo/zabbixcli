@@ -14,12 +14,12 @@ var GlobalFlags = []cli.Flag{
 		Usage: "Set LogLevel Debug.",
 	},
 	cli.StringFlag{
-		Name:   "username, U",
+		Name:   "username",
 		Usage:  "set username.",
 		EnvVar: "ZABBIXCTL_USERNAME",
 	},
 	cli.StringFlag{
-		Name:   "password, P",
+		Name:   "password",
 		Usage:  "set password.",
 		EnvVar: "ZABBIXCTL_PASSWORD",
 	},
@@ -62,7 +62,12 @@ var Commands = []cli.Command{
 				Usage: "select connect type. default false.(use dnsname)",
 			},
 			cli.StringFlag{
-				Name:   "proxy, p",
+				Name:  "port, p",
+				Usage: "set port",
+				Value: "10050",
+			},
+			cli.StringFlag{
+				Name:   "proxy, P",
 				Usage:  "set proxy.",
 				EnvVar: "ZABBIXCTL_PROXY",
 			},
@@ -97,28 +102,48 @@ var Commands = []cli.Command{
 		Category: "Host management",
 		Usage:    "Delete host",
 		Action:   command.CmdDelete,
-		Flags:    []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "hostname, H",
+				Usage: "set hostname.",
+			},
+		},
 	},
 	{
 		Name:     "proxy-list",
 		Category: "Lists",
 		Usage:    "Shows a list of zabbix-proxies",
 		Action:   command.CmdProxyList,
-		Flags:    []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.BoolFlag{
+				Name:  "raw, r",
+				Usage: "output raw format.",
+			},
+		},
 	},
 	{
 		Name:     "template-list",
 		Category: "Lists",
 		Usage:    "Shows a list of templates",
 		Action:   command.CmdTemplateList,
-		Flags:    []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.BoolFlag{
+				Name:  "raw, r",
+				Usage: "output raw format.",
+			},
+		},
 	},
 	{
 		Name:     "hostgroup-list",
 		Category: "Lists",
 		Usage:    "Shows a list of host-groups",
 		Action:   command.CmdHostGroupList,
-		Flags:    []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.BoolFlag{
+				Name:  "raw, r",
+				Usage: "output raw format.",
+			},
+		},
 	},
 }
 
