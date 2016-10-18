@@ -19,6 +19,24 @@
 			"path": "github.com/codegangsta/cli",
 			"revision": "55f715e28c46073d0e217e2ce8eb46b0b45e3db6",
 			"revisionTime": "2016-10-06T03:53:53Z"
+		},
+		{
+			"checksumSHA1": "+U+s6CzixLU/wKizY4vRCkYJ1WM=",
+			"path": "github.com/comail/colog",
+			"revision": "fba8e7b1f46c3607f09760ce3880066e7ff57c5a",
+			"revisionTime": "2016-04-16T08:50:26Z"
+		},
+		{
+			"checksumSHA1": "DdH3xAkzAWJ4B/LGYJyCeRsly2I=",
+			"path": "github.com/mattn/go-runewidth",
+			"revision": "d6bea18f789704b5f83375793155289da36a3c7f",
+			"revisionTime": "2016-03-15T04:07:12Z"
+		},
+		{
+			"checksumSHA1": "0KQQY1f4p/HmCQE7HjdgesEoe3Y=",
+			"path": "github.com/olekukonko/tablewriter",
+			"revision": "bdcc175572fd7abece6c831e643891b9331bc9e7",
+			"revisionTime": "2016-09-23T12:54:01Z"
 		}
 	],
 	"rootPath": "github.com/youyo/zabbixctl"

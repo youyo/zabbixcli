@@ -1,22 +1,34 @@
 package command
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/AlekSi/zabbix"
 	"github.com/codegangsta/cli"
 )
 
 func CmdProxyList(c *cli.Context) (err error) {
+	// set logger
+	setLoggerColog(c.GlobalBool("debug"))
+
 	z := newZabbixctl(c)
 	if err = z.login(); err != nil {
+		log.Printf("error: %v", err)
 		return
 	}
 	proxies, err := z.proxyGet()
 	if err != nil {
+		log.Printf("error: %v", err)
 		return
 	}
-	outputProxyList(proxies)
+
+	// select output format
+	switch c.Bool("raw") {
+	case true:
+		outputRaw(proxies)
+	default:
+		outputTable(proxies, "Proxies")
+	}
 	return
 }
 
@@ -26,6 +38,7 @@ func (z *zabbixctl) proxyGet() (proxies []string, err error) {
 		"sortfield": "host",
 	})
 	if err != nil {
+		log.Printf("error: %v", err)
 		return nil, err
 	}
 	proxies, _ = extractProxyHost(resp)
@@ -39,10 +52,4 @@ func extractProxyHost(resp zabbix.Response) (proxies []string, err error) {
 		proxies = append(proxies, r["host"].(string))
 	}
 	return proxies, nil
-}
-
-func outputProxyList(proxies []string) {
-	for _, v := range proxies {
-		fmt.Println(v)
-	}
 }

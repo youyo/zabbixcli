@@ -1,19 +1,34 @@
 package command
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/AlekSi/zabbix"
 	"github.com/codegangsta/cli"
 )
 
 func CmdHostGroupList(c *cli.Context) (err error) {
+	// set logger
+	setLoggerColog(c.GlobalBool("debug"))
+
 	z := newZabbixctl(c)
 	if err = z.login(); err != nil {
+		log.Printf("error: %v", err)
 		return
 	}
 	hostGroups, err := z.hostGroupGet()
-	outputHostGroupList(hostGroups)
+	if err != nil {
+		log.Printf("error: %v", err)
+		return
+	}
+
+	// select output format
+	switch c.Bool("raw") {
+	case true:
+		outputRaw(hostGroups)
+	default:
+		outputTable(hostGroups, "HostGroups")
+	}
 	return
 }
 
@@ -23,6 +38,7 @@ func (z *zabbixctl) hostGroupGet() (hostGroups []string, err error) {
 		"sortfield": "name",
 	})
 	if err != nil {
+		log.Printf("error: %v", err)
 		return nil, err
 	}
 	hostGroups, _ = extractHostGroupName(resp)
@@ -36,10 +52,4 @@ func extractHostGroupName(resp zabbix.Response) (hostGroups []string, err error)
 		hostGroups = append(hostGroups, r["name"].(string))
 	}
 	return hostGroups, nil
-}
-
-func outputHostGroupList(hostGroups []string) {
-	for _, v := range hostGroups {
-		fmt.Println(v)
-	}
 }
