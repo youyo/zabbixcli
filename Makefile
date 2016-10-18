@@ -8,8 +8,6 @@ OWNER := youyo
 ## Setup
 setup:
 	go get github.com/kardianos/govendor
-	go get github.com/golang/lint/golint
-	go get golang.org/x/tools/cmd/goimports
 	go get github.com/Songmu/make2help/cmd/make2help
 
 ## Install dependencies
@@ -27,6 +25,7 @@ vet: setup
 
 ## Lint
 lint: setup
+	go get github.com/golang/lint/golint
 	govendor vet +local
 	for pkg in $$(govendor list -p -no-status +local); do \
 		golint -set_exit_status $$pkg || exit $$?; \
@@ -49,8 +48,17 @@ release: build
 	zip $(Name)_$(GOOS)_$(GOARCH).zip $(Name)
 	ghr -t ${GITHUB_TOKEN} -u $(OWNER) -r $(Name) --replace $(Version) $(Name)_$(GOOS)_$(GOARCH).zip
 
+## Build Test-Zabbix-Server
+zabbix-build:
+	docker-compose up -d
+
+## Destroy Test-Zabbix-Server
+zabbix-destroy:
+	docker-compose stop
+	docker-compose rm -f
+
 ## Show help
 help:
 	@make2help $(MAKEFILE_LIST)
 
-.PHONY: setup deps update vet lint test build build-local release help
+.PHONY: setup deps update vet lint test build build-local release zabbix-build zabbix-destroy help
