@@ -32,7 +32,7 @@ lint: setup
 
 ## Run tests
 test: deps
-	govendor test +local
+	govendor test +local -cover
 
 ## Build
 build: deps
@@ -40,7 +40,7 @@ build: deps
 
 ## Build
 build-local: deps
-	go build -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)" -o pkg/$(Name)
+	go build -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)" -o $(Name)
 
 ## Install
 install: deps
