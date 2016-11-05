@@ -42,6 +42,10 @@ build: deps
 build-local: deps
 	go build -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)" -o pkg/$(Name)
 
+## Install
+install: deps
+	go install -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)"
+
 ## Release
 release: build
 	mkdir -p pkg/release
@@ -62,4 +66,4 @@ zabbix-destroy:
 help:
 	@make2help $(MAKEFILE_LIST)
 
-.PHONY: setup deps update vet lint test build build-local release zabbix-build zabbix-destroy help
+.PHONY: setup deps update vet lint test build build-local install release zabbix-build zabbix-destroy help
