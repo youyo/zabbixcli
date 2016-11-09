@@ -1,4 +1,4 @@
-Name := zabbixctl
+Name := zabbixcli
 Version := $(shell git describe --tags --abbrev=0)
 OWNER := youyo
 .DEFAULT_GOAL := help
