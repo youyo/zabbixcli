@@ -1,4 +1,4 @@
-Name := zabbixctl
+Name := zabbixcli
 Version := $(shell git describe --tags --abbrev=0)
 OWNER := youyo
 .DEFAULT_GOAL := help
@@ -32,7 +32,7 @@ lint: setup
 
 ## Run tests
 test: deps
-	govendor test +local
+	govendor test +local -cover
 
 ## Build
 build: deps
@@ -40,7 +40,11 @@ build: deps
 
 ## Build
 build-local: deps
-	go build -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)" -o pkg/$(Name)
+	go build -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)" -o $(Name)
+
+## Install
+install: deps
+	go install -ldflags "-X main.Version=$(Version) -X main.Name=$(Name)"
 
 ## Release
 release: build
@@ -62,4 +66,4 @@ zabbix-destroy:
 help:
 	@make2help $(MAKEFILE_LIST)
 
-.PHONY: setup deps update vet lint test build build-local release zabbix-build zabbix-destroy help
+.PHONY: setup deps update vet lint test build build-local install release zabbix-build zabbix-destroy help

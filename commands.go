@@ -145,6 +145,18 @@ var Commands = []cli.Command{
 			},
 		},
 	},
+	{
+		Name:     "search",
+		Category: "Lists",
+		Usage:    "Search hosts",
+		Action:   command.CmdSearch,
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "hostname, H",
+				Usage: "set hostname.",
+			},
+		},
+	},
 }
 
 func CommandNotFound(c *cli.Context, command string) {
