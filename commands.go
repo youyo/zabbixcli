@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/codegangsta/cli"
-	"github.com/youyo/zabbixctl/command"
+	"github.com/youyo/zabbixcli/command"
 )
 
 var GlobalFlags = []cli.Flag{

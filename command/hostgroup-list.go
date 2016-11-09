@@ -32,7 +32,7 @@ func CmdHostGroupList(c *cli.Context) (err error) {
 	return
 }
 
-func (z *zabbixctl) hostGroupGet() (hostGroups []string, err error) {
+func (z *zabbixcli) hostGroupGet() (hostGroups []string, err error) {
 	resp, err := z.Api.Call("hostgroup.get", zabbix.Params{
 		"output":    "extend",
 		"sortfield": "name",

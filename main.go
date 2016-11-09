@@ -30,7 +30,7 @@ func main() {
 func versionCheck() {
 	githubTag := &latest.GithubTag{
 		Owner:      "youyo",
-		Repository: "zabbixctl",
+		Repository: "zabbixcli",
 	}
 	res, err := latest.Check(githubTag, Version)
 	if err == nil {

@@ -53,7 +53,7 @@ func CmdCreate(c *cli.Context) (err error) {
 	return
 }
 
-func (z *zabbixctl) hostCreate(hostname, hostGroup, templates, ipaddress, dnsname, port, proxy string, useIp bool) (resp zabbix.Response, err error) {
+func (z *zabbixcli) hostCreate(hostname, hostGroup, templates, ipaddress, dnsname, port, proxy string, useIp bool) (resp zabbix.Response, err error) {
 	zabbixParams := z.buildZabbixParams(hostname, hostGroup, templates, ipaddress, dnsname, port, proxy, useIp)
 
 	resp, err = z.Api.Call("host.create", zabbixParams)
@@ -71,7 +71,7 @@ func whichInterfaceToBeUsed(useIp bool, ipaddress, dnsname string) int {
 	}
 }
 
-func (z *zabbixctl) buildZabbixParams(hostname, hostGroup, templates, ipaddress, dnsname, port, proxy string, useIp bool) (zabbixParams zabbix.Params) {
+func (z *zabbixcli) buildZabbixParams(hostname, hostGroup, templates, ipaddress, dnsname, port, proxy string, useIp bool) (zabbixParams zabbix.Params) {
 	useInterface := whichInterfaceToBeUsed(useIp, ipaddress, dnsname)
 	var hostGroupIDs []map[string]string
 	hostGroupList := splitArgs(hostGroup)

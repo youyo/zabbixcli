@@ -1,4 +1,4 @@
-# zabbixctl
+# zabbixcli
 
 [![wercker status](https://app.wercker.com/status/e775b2c37f940071044d7775fc843676/s/master "wercker status")](https://app.wercker.com/project/byKey/e775b2c37f940071044d7775fc843676)
 
@@ -9,15 +9,15 @@ For control the host of zabbix.
 ## Usage
 
 ```
-$ zabbixctl -h
+$ zabbixcli -h
 NAME:
-   zabbixctl - For control the host of zabbix.
+   zabbixcli - For control the host of zabbix.
 
 USAGE:
-   zabbixctl [global options] command [command options] [arguments...]
+   zabbixcli [global options] command [command options] [arguments...]
 
 VERSION:
-   0.1.0
+   0.1.1
 
 AUTHOR(S):
    youyo
@@ -35,6 +35,7 @@ COMMANDS:
      proxy-list      Shows a list of zabbix-proxies
      template-list   Shows a list of templates
      hostgroup-list  Shows a list of host-groups
+     search          Search hosts
 
 GLOBAL OPTIONS:
    --debug           Set LogLevel Debug.
@@ -50,13 +51,13 @@ GLOBAL OPTIONS:
 To install,
 
 ```bash
-$ wget https://github.com/youyo/zabbixctl/releases/download/0.1.0/zabbixctl_linux_amd64.zip
-$ unzip zabbixctl_linux_amd64.zip -d /usr/local/bin/
+$ wget https://github.com/youyo/zabbixcli/releases/download/$latest_version/zabbixcli_linux_amd64.zip
+$ unzip zabbixcli_linux_amd64.zip -d /usr/local/bin/
 ```
 
 ## Contribution
 
-1. Fork ([https://github.com/youyo/zabbixctl/fork](https://github.com/youyo/zabbixctl/fork))
+1. Fork ([https://github.com/youyo/zabbixcli/fork](https://github.com/youyo/zabbixcli/fork))
 1. Run `make setup && make deps`
 1. Create a feature branch
 1. Commit your changes

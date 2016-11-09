@@ -19,7 +19,7 @@ const UseIp = 1
 const UseDns = 0
 
 type (
-	zabbixctl struct {
+	zabbixcli struct {
 		Login login
 		Api   *zabbix.API
 	}
@@ -51,7 +51,7 @@ func checkRequiredStringArgs(i map[string]string) {
 	}
 }
 
-func newZabbixctl(c *cli.Context) (z *zabbixctl) {
+func newZabbixctl(c *cli.Context) (z *zabbixcli) {
 	// Required args check
 	m := map[string]string{
 		"username": c.GlobalString("username"),
@@ -61,7 +61,7 @@ func newZabbixctl(c *cli.Context) (z *zabbixctl) {
 	checkRequiredStringArgs(m)
 
 	// Login
-	z = &zabbixctl{
+	z = &zabbixcli{
 		Login: login{
 			UserName: c.GlobalString("username"),
 			Password: c.GlobalString("password"),
@@ -71,13 +71,13 @@ func newZabbixctl(c *cli.Context) (z *zabbixctl) {
 	return
 }
 
-func (z *zabbixctl) login() (err error) {
+func (z *zabbixcli) login() (err error) {
 	z.Api = zabbix.NewAPI(z.Login.Url)
 	_, err = z.Api.Login(z.Login.UserName, z.Login.Password)
 	return
 }
 
-func (z *zabbixctl) hostExists(host string) (exist bool, err error) {
+func (z *zabbixcli) hostExists(host string) (exist bool, err error) {
 	resp, err := z.Api.Call("host.get", zabbix.Params{
 		"output": "extend",
 		"filter": map[string][]string{
@@ -98,7 +98,7 @@ func (z *zabbixctl) hostExists(host string) (exist bool, err error) {
 	}
 }
 
-func (z *zabbixctl) hostStatusUpdate(hostID string, status int) (resp zabbix.Response, err error) {
+func (z *zabbixcli) hostStatusUpdate(hostID string, status int) (resp zabbix.Response, err error) {
 	resp, err = z.Api.Call("host.update", zabbix.Params{
 		"hostid": hostID,
 		"status": status,
@@ -106,7 +106,7 @@ func (z *zabbixctl) hostStatusUpdate(hostID string, status int) (resp zabbix.Res
 	return
 }
 
-func (z *zabbixctl) hostIdGet(host string) (hostID string, err error) {
+func (z *zabbixcli) hostIdGet(host string) (hostID string, err error) {
 	resp, err := z.Api.Call("host.get", zabbix.Params{
 		"output": "extend",
 		"filter": map[string][]string{
@@ -135,7 +135,7 @@ func extractHostID(resp zabbix.Response) (hostID string, err error) {
 	return
 }
 
-func (z *zabbixctl) hostGroupIdGet(hostGroup string) (hostGroupID string, err error) {
+func (z *zabbixcli) hostGroupIdGet(hostGroup string) (hostGroupID string, err error) {
 	resp, err := z.Api.Call("hostgroup.get", zabbix.Params{
 		"output": "extend",
 		"filter": map[string][]string{
@@ -164,7 +164,7 @@ func extractHostGroupID(resp zabbix.Response) (hostGroupID string, err error) {
 	return
 }
 
-func (z *zabbixctl) templateIdGet(template string) (templateID string, err error) {
+func (z *zabbixcli) templateIdGet(template string) (templateID string, err error) {
 	resp, err := z.Api.Call("template.get", zabbix.Params{
 		"output": "extend",
 		"filter": map[string][]string{
@@ -198,7 +198,7 @@ func splitArgs(args string) (a []string) {
 	return
 }
 
-func (z *zabbixctl) proxyIdGet(proxy string) (proxyID string, err error) {
+func (z *zabbixcli) proxyIdGet(proxy string) (proxyID string, err error) {
 	resp, err := z.Api.Call("proxy.get", zabbix.Params{
 		"output": "extend",
 		"filter": map[string][]string{

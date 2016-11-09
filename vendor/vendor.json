@@ -27,6 +27,24 @@
 			"revisionTime": "2016-04-16T08:50:26Z"
 		},
 		{
+			"checksumSHA1": "WsQM7/GEq4355WFQ4FMjutGnvNU=",
+			"path": "github.com/google/go-github/github",
+			"revision": "3e246d29992beb5a5d2fc253adebea86997c45b0",
+			"revisionTime": "2016-09-22T19:31:51Z"
+		},
+		{
+			"checksumSHA1": "yyAzHoiVLu+xywYI2BDyRq6sOqE=",
+			"path": "github.com/google/go-querystring/query",
+			"revision": "9235644dd9e52eeae6fa48efd539fdc351a0af53",
+			"revisionTime": "2016-03-11T01:20:12Z"
+		},
+		{
+			"checksumSHA1": "L7vCR+T24+agfG7QQ2848/vMUOE=",
+			"path": "github.com/hashicorp/go-version",
+			"revision": "deeb027c13a95d56c7585df3fe29207208c6706e",
+			"revisionTime": "2016-07-25T21:20:58Z"
+		},
+		{
 			"checksumSHA1": "DdH3xAkzAWJ4B/LGYJyCeRsly2I=",
 			"path": "github.com/mattn/go-runewidth",
 			"revision": "d6bea18f789704b5f83375793155289da36a3c7f",
@@ -37,7 +55,25 @@
 			"path": "github.com/olekukonko/tablewriter",
 			"revision": "bdcc175572fd7abece6c831e643891b9331bc9e7",
 			"revisionTime": "2016-09-23T12:54:01Z"
+		},
+		{
+			"checksumSHA1": "MbSv49Jm8SQac1R+QxC+s2TS+OE=",
+			"path": "github.com/tcnksm/go-latest",
+			"revision": "79c2c6c7fa60f1bd7e1f204606aae7b9082f7304",
+			"revisionTime": "2016-03-20T04:23:52Z"
+		},
+		{
+			"checksumSHA1": "vqc3a+oTUGX8PmD0TS+qQ7gmN8I=",
+			"path": "golang.org/x/net/html",
+			"revision": "b400c2eff1badec7022a8c8f5bea058b6315eed7",
+			"revisionTime": "2016-06-19T19:44:24Z"
+		},
+		{
+			"checksumSHA1": "00eQaGynDYrv3tL+C7l9xH0IDZg=",
+			"path": "golang.org/x/net/html/atom",
+			"revision": "b400c2eff1badec7022a8c8f5bea058b6315eed7",
+			"revisionTime": "2016-06-19T19:44:24Z"
 		}
 	],
-	"rootPath": "github.com/youyo/zabbixctl"
+	"rootPath": "github.com/youyo/zabbixcli"
 }

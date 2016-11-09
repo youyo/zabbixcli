@@ -32,7 +32,7 @@ func CmdProxyList(c *cli.Context) (err error) {
 	return
 }
 
-func (z *zabbixctl) proxyGet() (proxies []string, err error) {
+func (z *zabbixcli) proxyGet() (proxies []string, err error) {
 	resp, err := z.Api.Call("proxy.get", zabbix.Params{
 		"output":    "extend",
 		"sortfield": "host",

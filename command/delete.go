@@ -50,7 +50,7 @@ func CmdDelete(c *cli.Context) (err error) {
 	return
 }
 
-func (z *zabbixctl) hostDelete(hostID string) (err error) {
+func (z *zabbixcli) hostDelete(hostID string) (err error) {
 	_, err = z.Api.Call("host.delete", []string{
 		hostID,
 	})

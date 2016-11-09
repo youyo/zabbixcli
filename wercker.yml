@@ -4,7 +4,7 @@ test:
     cmd: /bin/bash
   steps:
     - wercker/setup-go-workspace:
-      package-dir: github.com/youyo/zabbixctl
+      package-dir: github.com/youyo/zabbixcli
     - script:
       name: Tests
       code: |-
@@ -16,7 +16,7 @@ release:
     cmd: /bin/bash
   steps:
     - wercker/setup-go-workspace:
-      package-dir: github.com/youyo/zabbixctl
+      package-dir: github.com/youyo/zabbixcli
     - script:
       name: Releases
       code: |-

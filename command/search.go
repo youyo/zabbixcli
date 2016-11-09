@@ -36,7 +36,7 @@ func CmdSearch(c *cli.Context) (err error) {
 	return
 }
 
-func (z *zabbixctl) searchHosts(searchWord string) (hosts []string, err error) {
+func (z *zabbixcli) searchHosts(searchWord string) (hosts []string, err error) {
 	resp, err := z.Api.Call("host.get", zabbix.Params{
 		"output": "extend",
 		"search": map[string]string{

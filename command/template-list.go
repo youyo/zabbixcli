@@ -34,7 +34,7 @@ func CmdTemplateList(c *cli.Context) (err error) {
 	return
 }
 
-func (z *zabbixctl) templateGet() (templates []string, err error) {
+func (z *zabbixcli) templateGet() (templates []string, err error) {
 	resp, err := z.Api.Call("template.get", zabbix.Params{
 		"output":    "extend",
 		"sortfield": "name",
