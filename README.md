@@ -1,6 +1,6 @@
 # zabbixcli
 
-[![wercker status](https://app.wercker.com/status/e775b2c37f940071044d7775fc843676/s/master "wercker status")](https://app.wercker.com/project/byKey/e775b2c37f940071044d7775fc843676)
+[![wercker status](https://app.wercker.com/status/2357506da6c5b2d9c86652321466787e/s/master "wercker status")](https://app.wercker.com/project/byKey/2357506da6c5b2d9c86652321466787e)
 
 ## Description
 
